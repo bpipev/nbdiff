@@ -1,4 +1,3 @@
-//source : http://qunitjs.com/intro/#testing-the-dom-manipulation
 var prettyDate = {
   format: function(now, time){
     var date = new Date(time || ""),
