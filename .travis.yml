@@ -6,7 +6,9 @@ notifications:
     - "bsplay@gmail.com"
 script:
     - "python app.py"
+    - "npm test"
 env:
     - FLASK=0.10
 install:
     - sudo pip install flask==$FLASK --use-mirrors
+    - npm install
