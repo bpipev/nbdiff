@@ -21,6 +21,11 @@ def getQunitJS():
     javaScript = open('lib/qunit/qunit-1.12.0.js').read();
     return Response(javaScript, mimetype='text/javascript')
 
+@app.route("/diffAlgoTestModule.js")
+def getTestJS():
+    javaScript = open('src/test/diffAlgoTestModule.js').read();
+    return Response(javaScript, mimetype='text/javascript')
+
 @app.route("/right")
 def ipynbRight():
     json = open('src/JSDiff/right.ipynb').read()
