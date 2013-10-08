@@ -6,6 +6,8 @@ notifications:
     - "bsplay@gmail.com"
 before_script:
     - "python app.py"
+    - "npm install"
+    - "npm travis"
 env:
     - FLASK=0.10
 install:
