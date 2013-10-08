@@ -7,7 +7,6 @@ notifications:
 before_script:
     - "python app.py"
 env:
-    - FLASK=0.9
+    - FLASK=0.10
 install:
     - sudo pip install flask==$FLASK --use-mirrors
-    - sudo pip install -e . --use-mirrors
