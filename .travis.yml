@@ -4,3 +4,5 @@ node_js:
 notifications:
   email:
     - "bsplay@gmail.com"
+before_script:
+    - "python app.py"
