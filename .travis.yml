@@ -6,3 +6,6 @@ notifications:
     - "bsplay@gmail.com"
 before_script:
     - "python app.py"
+install:
+    - pip install flask==$FLASK --use-mirrors
+    - pip install -e . --use-mirrors
