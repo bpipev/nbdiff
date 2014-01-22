@@ -6,29 +6,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <title>Diff Tool</title>
-    <style type="text/css">
-    	pre {
-		white-space: pre-wrap; /* css-3 */
-		white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
-		white-space: -pre-wrap; /* Opera 4-6 */
-		white-space: -o-pre-wrap; /* Opera 7 */
-		word-wrap: break-word; /* Internet Explorer 5.5+ */
-		width:1000px;
-		background-color: #E8E8E8;
-		}
-		.textDiv {
-			overflow-y:scroll;
-			overflow-x:scroll;
-			resize:both;
-			width:400px;
-			
-		}
-	</style>
-	<link rel="stylesheet" type="text/css" href="..\static\style.css"> 
+	<link rel="stylesheet" type="text/css" href="../static/style.css"> 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
-	<script type="text/javascript" src="..\static\main.js"></script>
-	<script type="text/javascript" src="..\static\Notebook.js"></script>
-	<script type="text/javascript" src="..\static\NotebookMerge.js"></script>
+	<script type="text/javascript" src="../static/main.js"></script>
+	<script type="text/javascript" src="../static/Notebook.js"></script>
+	<script type="text/javascript" src="../static/NotebookMerge.js"></script>
   </head>
   <body>
 	<table width="100%" >
@@ -44,26 +26,23 @@
 			</td>
 		</tr>
 		<tr>
-			<td>
-				<p>Left Side Content:</p>
-				<br/>
-				<div class="textDiv">
-					<pre id="file1Content"/>
-				</div>
-			</td>
-			<td>
-				<p>Results:</p>
-				<br/>
-				<div class="textDiv">
-					<pre id="result"/>
-				</div>
-			</td>
-			<td>
-				<p>Right Side Content:</p>
-				<br/>
-				<div class="textDiv">
-					<pre id="file2Content"/>
-				</div>
+			<td colspan="3">
+				<table width="100%">
+					<tr>
+						<td width="33%"><p>Left Side Content:</p></td>
+						<td width="33%"><p>Results:</p></td>
+						<td width="33%"><p>Right Side Content:</p></td>
+					</tr>
+						<td width="33%">
+							<pre id="file1Content"></pre>
+						</td>
+						<td width="33%">
+							<pre id="result"></pre>
+						</td>
+						<td width="33%">
+							<pre id="file2Content"></pre>
+						</td>
+				</table>
 			</td>
 		</tr>
 	</table>
