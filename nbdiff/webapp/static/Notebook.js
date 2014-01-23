@@ -2,31 +2,31 @@ function Notebook(data) {
 	this.data = data;
 }
 
-Notebook.prototype.render = function(panelID) {
-	for(var i in this.data.worksheets[0].cells)
+Notebook.prototype.render = function(cellColumn) {
+	for(var row in this.data.worksheets[0].cells)
 	{
-		this.addCell(panelID, this.data.worksheets[0].cells[i]);
+		this.addCell(row, cellColumn, this.data.worksheets[0].cells[row]);
 	}
 };
 
-Notebook.prototype.addCell = function(panelID, cellData) {
+Notebook.prototype.addCell = function(cellRow, cellColumn, cellData) {
 	if(cellData.cell_type == "heading")
 	{
-		this.addTextCell(cellData.source, panelID);
+		this.addTextCell(cellRow, cellColumn, cellData.source);
 	}
 	else if(cellData.cell_type == "code") {
-		this.addTextCell(cellData.input, panelID);
+		this.addTextCell(cellRow, cellColumn, cellData.input);
 		if(typeof cellData.outputs[0] != "undefined")
 		{
-			if(cellData.outputs[0].png != "undefined")
-				$("#"+panelID).append("<div class='cell'><img src='data:image/png;base64,"+cellData.outputs[0].png+"'/></div>");
+			if(typeof cellData.outputs[0].png != "undefined")
+				$("#"+cellRow+" > td."+cellColumn).append("<div><img src='data:image/png;base64,"+cellData.outputs[0].png+"'/></div>");
 			if(typeof cellData.outputs[0].text != "undefined")
-				$("#"+panelID).append("<div class='cell'><p>"+JSON.stringify(cellData.outputs[0].text)+"</p></div>");
+				this.addTextCell(cellRow, cellColumn, cellData.outputs[0].text);
 		}
 	}
 };
 
-Notebook.prototype.addTextCell = function(text, panelID) {
+Notebook.prototype.addTextCell = function(cellRow, cellColumn, text) {
 	var temp = text;
 	var t = "";
 	for(var i in text)
@@ -35,7 +35,7 @@ Notebook.prototype.addTextCell = function(text, panelID) {
 		t = t.concat(temp[i]);
 	}
 	
-	$("#"+panelID).append("<div class='cell'><p>"+t+"</p></div>");
+	$("#"+cellRow+" > td."+cellColumn).append("<div><p>"+t+"</p></div>");
 };
 
 Notebook.prototype.getCell = function(index) {
