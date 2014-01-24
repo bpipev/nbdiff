@@ -14,13 +14,13 @@ $( document ).ready(function() {
 				for(var i = 0; i < baseCells; i++)
 				{
 					var $row = $("<tr id="+i+"></tr>").appendTo("#merge_table > tbody")
-					$("<td class='cell1'></td>").appendTo($row);
-					$("<td class='cell2'></td>").appendTo($row);
-					$("<td class='cell3'></td>").appendTo($row);
+					$("<td class='local'></td>").appendTo($row);
+					$("<td class='base'></td>").appendTo($row);
+					$("<td class='remote'></td>").appendTo($row);
 				}
-				local.render("cell1");
-				base.render("cell2");
-				remote.render("cell3");
+				local.render("local");
+				base.render("base");
+				remote.render("remote");
 				} 
 		)
 	});

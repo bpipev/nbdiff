@@ -2,24 +2,26 @@ td {
 	vertical-align: top;
 }
 
-.cell {
+.local, .base, .remote {
 	min-height: 25px;
-    border-color: #FF0000;
+    border-color: #C0C0C0;
     border-style: solid;
     border-width: 1px;
 }
 
-/*pre {
-	white-space: pre-wrap; /* css-3 */
-	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
-	white-space: -pre-wrap; /* Opera 4-6 */
-	white-space: -o-pre-wrap; /* Opera 7 */
-	word-wrap: break-word; /* Internet Explorer 5.5+ */
-	width:1000px;
-	background-color: #E8E8E8;
+.input, .output {
+	padding: 10px;
+	margin: 10px;
 }
-.textDiv {
-	overflow-y:scroll;
-	overflow-x:scroll;
-	resize:both;
-}*/
+
+p.empty, p.modified {
+	border-color: red;
+	border-style: solid;
+	border-width: 1px;
+}
+
+p.added {
+	border-color: green;
+	border-style: solid;
+	border-width: 1px;
+}
