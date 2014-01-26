@@ -11,6 +11,7 @@
 	<script type="text/javascript" src="../static/main.js"></script>
 	<script type="text/javascript" src="../static/Notebook.js"></script>
 	<script type="text/javascript" src="../static/NotebookMerge.js"></script>
+	<script type="text/javascript" src="../static/libraries/FileSaver.js"></script>
   </head>
   <body>
 	<table width="100%" >
@@ -20,6 +21,7 @@
 			</td>
 			<td width="33%">
 				<input type="button" id="generateDiff" value="Generate Diff File" name="generateDiff"/>
+				<a id="nbLink" href="javascript:void(0)">Download</a>
 			</td>
 			<td width="33%">
 				<input type="file" id="file2" name="file2"/>

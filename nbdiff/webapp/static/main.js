@@ -1,3 +1,7 @@
+var base;
+var local;
+var remote;
+
 $( document ).ready(function() {
 	// Handler for .ready() called.
 	$( "#generateDiff" ).click(function() {
@@ -5,18 +9,22 @@ $( document ).ready(function() {
 			function(data) { 
 				var dataObject = JSON.parse(data);
 				nb = new NotebookMerge(dataObject);
-				var base = nb.getBase();
-				var local = nb.getLocal();
-				var remote = nb.getRemote();
-				var baseCells = base.data.worksheets[0].cells.length;
-				var localCells = local.data.worksheets[0].cells.length;
-				var remoteCells = remote.data.worksheets[0].cells.length;
+				base = nb.getBase();
+				local = nb.getLocal();
+				remote = nb.getRemote();
+				var baseCells = base.getCellSize();
+				var localCells = local.getCellSize();
+				var remoteCells = remote.getCellSize();
 				createTable(baseCells);
 				local.render("local");
 				base.render("base");
 				remote.render("remote");
 				} 
 		)
+	});
+	
+	$( "#nbLink" ).click(function() {
+		base.saveNotebook();
 	});
 	
 	function createTable(rows) {
@@ -53,6 +61,32 @@ function drop(ev)
 {
 	ev.preventDefault();
 	var data=ev.dataTransfer.getData("data");
+	var $source = $('#'+data);
+	var sourceCell;
+	if($source.attr("class") == "local")
+	{
+		sourceCell = local.getCell($source.closest("tr").attr("id"));
+	}
+	else if($source.attr("class") == "base")
+	{
+		sourceCell = base.getCell($source.closest("tr").attr("id"));
+	}
+	else if($source.attr("class") == "remote")
+	{
+		sourceCell = remote.getCell($source.closest("tr").attr("id"));
+	}
 	var $target = $(ev.target);
-	$target.closest("td").html($('#'+data).html())
+	if($target.attr("class") == "local")
+	{
+		local.setCell($target.closest("tr").attr("id"), sourceCell);
+	}
+	else if($target.attr("class") == "base")
+	{
+		base.setCell($target.closest("tr").attr("id"), sourceCell);
+	}
+	else if($target.attr("class") == "remote")
+	{
+		remote.setCell($target.closest("tr").attr("id"), sourceCell);
+	}
+	$target.closest("td").html($source.html())
 }

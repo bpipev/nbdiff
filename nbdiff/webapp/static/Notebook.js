@@ -5,11 +5,11 @@ function Notebook(data) {
 Notebook.prototype.render = function(cellColumn) {
 	for(var row in this.data.worksheets[0].cells)
 	{
-		this.addCell(row, cellColumn, this.data.worksheets[0].cells[row]);
+		this.addCellToGrid(row, cellColumn, this.data.worksheets[0].cells[row]);
 	}
 };
 
-Notebook.prototype.addCell = function(cellRow, cellColumn, cellData) {
+Notebook.prototype.addCellToGrid = function(cellRow, cellColumn, cellData) {
 	if(cellData.cell_type == "heading" || cellData.cell_type == "markdown" || cellData.cell_type == "raw")
 	{
 		this.addTextCell(cellRow, cellColumn, cellData.source, "input "+cellData.metadata.state);
@@ -38,14 +38,24 @@ Notebook.prototype.addTextCell = function(cellRow, cellColumn, text, css_class) 
 	$("#"+cellRow+" > td."+cellColumn).append("<div><p class='"+css_class+"' >"+t+"</p></div>");
 };
 
+Notebook.prototype.getCellSize = function() {
+	return this.data.worksheets[0].cells.length;
+}
+
 Notebook.prototype.getCell = function(index) {
-	
+	var cell = this.data.worksheets[0].cells[index];
+	return cell;
 };
 
 Notebook.prototype.getCells = function() {
-
+	return this.data.worksheets[0].cells;
 };
 
+Notebook.prototype.setCell = function(index, data) {
+	this.data.worksheets[0].cells[index] = data;
+}
+
 Notebook.prototype.saveNotebook = function() {
-	
+	var blob = new Blob([JSON.stringify(this.data)], {type: "text/plain;charset=utf-8"});
+	saveAs(blob, "hello world.ipynb");
 };
