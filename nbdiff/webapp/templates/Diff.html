@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>Diff Tool</title>
+	<link rel="stylesheet" type="text/css" href="../static/style.css"> 
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="../static/main.js"></script>
+	<script type="text/javascript" src="../static/Notebook.js"></script>
+	<script type="text/javascript" src="../static/NotebookMerge.js"></script>
+	<script type="text/javascript" src="../static/libraries/FileSaver.js"></script>
+  </head>
+  <body>
+	<table width="100%" >
+		<tr>
+			<td width="33%">
+				<input type="file" id="file1" name="file1"/>
+			</td>
+			<td width="33%">
+				<input type="button" id="generateDiff" value="Generate Diff File" name="generateDiff"/>
+				<a id="nbLink" href="javascript:void(0)">Download</a>
+			</td>
+			<td width="33%">
+				<input type="file" id="file2" name="file2"/>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<table width="100%" id="merge_table">
+						<!--<td width="33%">
+							<pre id="file1Content"></pre>
+						</td>
+						<td width="33%">
+							<pre id="result"></pre>
+						</td>
+						<td width="33%">
+							<pre id="file2Content"></pre>
+						</td>-->
+				</table>
+			</td>
+		</tr>
+	</table>
+  </body>
+</html>

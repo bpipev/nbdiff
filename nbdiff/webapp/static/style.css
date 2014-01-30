@@ -1,0 +1,40 @@
+td {
+	vertical-align: top;
+	width='33%';
+}
+
+.local, .base, .remote {
+	min-height: 25px;
+    border-color: #C0C0C0;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.input, .output {
+	padding: 10px;
+	margin: 10px;
+}
+
+p.empty, p.modified {
+	border-color: red;
+	border-style: solid;
+	border-width: 1px;
+	cursor: move;
+}
+
+p.added {
+	border-color: green;
+	border-style: solid;
+	border-width: 1px;
+	cursor: move;
+}
+
+[draggable] {
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	/* Required to make elements draggable in old WebKit */
+	-khtml-user-drag: element;
+	-webkit-user-drag: element;
+}
