@@ -7,7 +7,7 @@ $( document ).ready(function() {
 	init();
     
     function init() { 
-        var dataObject = JSON.parse("{}");
+        var dataObject = JSON.parse(document.getElementById("comparedData").innerHTML);
         nb = new NotebookMerge(dataObject);
         base = nb.getBase();
         local = nb.getLocal();
