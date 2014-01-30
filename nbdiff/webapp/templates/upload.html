@@ -1,0 +1,49 @@
+<!--
+    Written By: Richard Tang.
+    Source Modified from http://www.sitepoint.com/html5-file-drag-and-drop/.
+-->
+
+<html>
+<body>
+<form action="/merge" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+<link rel="stylesheet" type="text/css" href="/static/css/upload.css">
+<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />  
+<table align="center">
+<tr>
+    <td>
+        <fieldset>
+        <legend>Local File Upload</legend>
+        <div>
+            <label for="localFile">Specify Local .ipynb notebook File:</label>
+            <br/>
+            <input type="file" id="localFile" name="localFile"/>
+            <input type="hidden" id="localJSON" name="localJSON" />
+            <div id="localFileDrag">or drop files here</div>
+        </div>
+        </fieldset>
+    </td>
+    <td>
+        <div id="errorMsg" style="display:none"></div>  
+        <div style=" text-align: center;">
+            <input id="submitBtn" class="disableBtn" type="submit" value="Generate Merge Conflicts" />
+        </div>
+    </td>
+    <td>
+        <fieldset>
+        <legend>Remote File Upload</legend>
+        <div>
+            <label for="remoteFile">Specify Remote .ipynb notebook File:</label>
+            <br/>
+            <input type="file" id="remoteFile" name="remoteFile"/>
+            <input type="hidden" id="remoteJSON" name="remoteJSON" />
+            <div id="remoteFileDrag">or drop files here</div>
+        </div>
+        </fieldset>
+    </td>
+</tr>
+</table>
+</form>
+
+<script type="text/javascript" src="/static/js/upload.js"> </script>
+</body>
+</html>
