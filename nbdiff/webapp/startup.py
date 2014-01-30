@@ -10,8 +10,9 @@ def merge():
     local = request.form['localJSON']
     remote = request.form['remoteJSON']
     #do magical comparison here /*
+    comparedFile = open("example-premerged-notebook.ipynb").read()
     
-    return render_template('diff.html')
+    return render_template('Diff.html')
     
 
 if __name__ == "__main__":
