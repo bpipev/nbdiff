@@ -19,6 +19,8 @@ $( document ).ready(function() {
         local.render("local");
         base.render("base");
         remote.render("remote");
+        //var myCodeMirror = CodeMirror(document.body);
+        //var myCodeMirror = CodeMirror.fromTextArea(myTextArea);
     } 
 
 	
@@ -47,7 +49,16 @@ function dragEnter(ev) {
 
 function allowDrop(ev)
 {
-	ev.preventDefault();
+	var data=ev.dataTransfer.getData("data");
+	var $source = $('#'+data);
+	var $target = $(ev.target);
+	var sourceNotBase = $source.closest("td").attr("class") != "base";
+	var targetIsBase = $target.closest("td").attr("class") == "base";
+	if(sourceNotBase && targetIsBase)
+	{
+		//prevent default event and allow drag and drop
+		ev.preventDefault();
+	}
 }
 
 function drag(ev)
@@ -62,30 +73,19 @@ function drop(ev)
 	var data=ev.dataTransfer.getData("data");
 	var $source = $('#'+data);
 	var sourceCell;
-	if($source.attr("class") == "local")
+	if($source.closest("td").attr("class") == "local")
 	{
 		sourceCell = local.getCell($source.closest("tr").attr("id"));
 	}
-	else if($source.attr("class") == "base")
-	{
-		sourceCell = base.getCell($source.closest("tr").attr("id"));
-	}
-	else if($source.attr("class") == "remote")
+	else if($source.closest("td").attr("class") == "remote")
 	{
 		sourceCell = remote.getCell($source.closest("tr").attr("id"));
 	}
 	var $target = $(ev.target);
-	if($target.attr("class") == "local")
+	if(typeof sourceCell == "undefined" || typeof $target == "undefined" )
 	{
-		local.setCell($target.closest("tr").attr("id"), sourceCell);
+		throw "undefined cell";
 	}
-	else if($target.attr("class") == "base")
-	{
-		base.setCell($target.closest("tr").attr("id"), sourceCell);
-	}
-	else if($target.attr("class") == "remote")
-	{
-		remote.setCell($target.closest("tr").attr("id"), sourceCell);
-	}
-	$target.closest("td").html($source.html())
+	base.setCell($target.closest("tr").attr("id"), sourceCell);
+	$target.closest("td").html($source.html());
 }

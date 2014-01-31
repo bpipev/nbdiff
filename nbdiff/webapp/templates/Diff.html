@@ -6,40 +6,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <title>Diff Tool</title>
-	<link rel="stylesheet" type="text/css" href="../static/css/style.css"> 
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../static/lib/codemirror-3.21/lib/codemirror.css">  
+	<script type="text/javascript" src="../static/lib/FileSaver.js"></script>
+	<script type="text/javascript" src="../static/lib/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="../static/lib/codemirror-3.21/lib/codemirror.js"></script>
+	<script type="text/javascript" src="../static/lib/codemirror-3.21/mode/python/python.js"></script>
 	<script type="text/javascript" src="../static/js/main.js"></script>
 	<script type="text/javascript" src="../static/js/Notebook.js"></script>
 	<script type="text/javascript" src="../static/js/NotebookMerge.js"></script>
-	<script type="text/javascript" src="../static/libraries/FileSaver.js"></script>
   </head>
   <body>
     <div id="comparedData" style="display:none">{{ comparedData }}</div>
 	<table width="100%" >
 		<tr>
 			<td width="33%">
-				<input type="file" id="file1" name="file1"/>
 			</td>
 			<td width="33%">
-				<input type="button" id="generateDiff" value="Generate Diff File" name="generateDiff"/>
-				<a id="nbLink" href="javascript:void(0)">Download</a>
+				<a id="nbLink" href="javascript:void(0)">Download results</a>
 			</td>
 			<td width="33%">
-				<input type="file" id="file2" name="file2"/>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="3">
 				<table width="100%" id="merge_table">
-						<!--<td width="33%">
-							<pre id="file1Content"></pre>
-						</td>
-						<td width="33%">
-							<pre id="result"></pre>
-						</td>
-						<td width="33%">
-							<pre id="file2Content"></pre>
-						</td>-->
 				</table>
 			</td>
 		</tr>

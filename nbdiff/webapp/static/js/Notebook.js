@@ -35,6 +35,7 @@ Notebook.prototype.addTextCell = function(cellRow, cellColumn, text, css_class) 
 		t = t.concat(temp[i]);
 	}
 	
+	//$("#"+cellRow+" > td."+cellColumn).append("<div><textarea class='"+css_class+"' style='display: none;' mode='python'>"+t+"</textarea></div>");
 	$("#"+cellRow+" > td."+cellColumn).append("<div><p class='"+css_class+"' >"+t+"</p></div>");
 };
 
