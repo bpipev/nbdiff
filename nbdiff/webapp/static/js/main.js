@@ -19,8 +19,6 @@ $( document ).ready(function() {
         local.render("local");
         base.render("base");
         remote.render("remote");
-        //var myCodeMirror = CodeMirror(document.body);
-        //var myCodeMirror = CodeMirror.fromTextArea(myTextArea);
     } 
 
 	

@@ -15,11 +15,11 @@ Notebook.prototype.addCellToGrid = function(cellRow, cellColumn, cellData) {
 		this.addTextCell(cellRow, cellColumn, cellData.source, "input "+cellData.metadata.state);
 	}
 	else if(cellData.cell_type == "code") {
-		this.addTextCell(cellRow, cellColumn, cellData.input, "input "+cellData.metadata.state);
+		this.addTextCell(cellRow, cellColumn, cellData.input, "prettyprint input "+cellData.metadata.state);
 		if(typeof cellData.outputs[0] != "undefined")
 		{
 			if(typeof cellData.outputs[0].png != "undefined" && cellData.outputs[0].png != "")
-				$("#"+cellRow+" > td."+cellColumn).append("<div><p class='output "+cellData.metadata.state+"'><img src='data:image/png;base64,"+cellData.outputs[0].png+"'/></p></div>");
+				$("#"+cellRow+" > td."+cellColumn).append("<div><pre class='output "+cellData.metadata.state+"'><img src='data:image/png;base64,"+cellData.outputs[0].png+"'/></pre></div>");
 			if(typeof cellData.outputs[0].text != "undefined")
 				this.addTextCell(cellRow, cellColumn, cellData.outputs[0].text, "output "+cellData.metadata.state);
 		}
@@ -31,12 +31,12 @@ Notebook.prototype.addTextCell = function(cellRow, cellColumn, text, css_class) 
 	var t = "";
 	for(var i in text)
 	{
-		temp[i] = temp[i].replace("\n", "<br/>");
+		//temp[i] = temp[i].replace("\n", "<br/>");
 		t = t.concat(temp[i]);
 	}
 	
 	//$("#"+cellRow+" > td."+cellColumn).append("<div><textarea class='"+css_class+"' style='display: none;' mode='python'>"+t+"</textarea></div>");
-	$("#"+cellRow+" > td."+cellColumn).append("<div><p class='"+css_class+"' >"+t+"</p></div>");
+	$("#"+cellRow+" > td."+cellColumn).append("<div><pre class='"+css_class+"' >"+t+"</pre></div>");
 };
 
 Notebook.prototype.getCellSize = function() {
