@@ -12,7 +12,7 @@ def merge():
     #do magical comparison here /*
     comparedData = open("example-premerged-notebook.ipynb").read()
     
-    return render_template('Diff.html', comparedData = comparedData)
+    return render_template('Merge.html', comparedData = comparedData)
     
 
 if __name__ == "__main__":
