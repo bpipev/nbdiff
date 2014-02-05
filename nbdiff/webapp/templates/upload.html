@@ -2,11 +2,12 @@
     Written By: Richard Tang.
     Source Modified from http://www.sitepoint.com/html5-file-drag-and-drop/.
 -->
-
-<html>
-<body>
-<form action="/merge" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+{% extends "parent.html" %}
+{% block head %}
 <link rel="stylesheet" type="text/css" href="/static/css/upload.css">
+{% endblock %}
+{% block content %}
+<form action="/merge" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
 <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />  
 <table align="center">
 <tr>
@@ -45,5 +46,4 @@
 </form>
 
 <script type="text/javascript" src="/static/js/upload.js"> </script>
-</body>
-</html>
+{% endblock %}

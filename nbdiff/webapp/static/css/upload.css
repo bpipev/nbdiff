@@ -55,6 +55,7 @@
    font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
    text-decoration: none;
    vertical-align: middle;
+   box-shadow: 5px 5px 2px #888888;
 }
 .disableBtn:hover {
    border-top-color: #851111;
@@ -87,6 +88,7 @@
    font-family: Georgia, serif;
    text-decoration: none;
    vertical-align: middle;
+   box-shadow: 5px 5px 2px #888888;
    }
 .enableBtn:hover {
    border-top-color: #39822d;
