@@ -15,15 +15,15 @@ td {
 	margin: 10px;
 }
 
-p.empty, p.modified {
-	border-color: red;
+pre.empty, pre.modified {
+	border-color: red !important;
 	border-style: solid;
 	border-width: 1px;
 	cursor: move;
 }
 
-p.added {
-	border-color: green;
+pre.added {
+	border-color: green !important;
 	border-style: solid;
 	border-width: 1px;
 	cursor: move;
@@ -37,4 +37,18 @@ p.added {
 	/* Required to make elements draggable in old WebKit */
 	-khtml-user-drag: element;
 	-webkit-user-drag: element;
+}
+
+img {
+	pointer-events: none;
+	width: 100%;
+    height: auto;
+}
+
+pre {
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
