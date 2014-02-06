@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request
-import urllib2
+from flask import Flask, render_template#, request
+#import urllib2
 
 app = Flask('NB Diff')
 

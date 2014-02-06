@@ -5,6 +5,7 @@
 {% extends "parent.html" %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="/static/css/upload.css">
+<script type="text/javascript" src="/static/libraries/verify.notify.min.js"> </script>
 <script type="text/javascript" src="/static/js/upload.js"> </script>
 {% endblock %}
 {% block content %}
@@ -60,12 +61,12 @@
             <div>
                 <label for="localFile">Specify <b>Local</b> .ipynb notebook URL:</label>
                 <br/>
-                <input type="text" id="localFile" name="localFile" style="width:90%" data-validate="url"/>
+                <input type="text" id="localFile" name="localFile" style="width:90%" data-validate="url,required"/>
             </div>
             <div>
                 <label for="remoteFile">Specify <b>Remote</b> .ipynb notebook URL:</label>
                 <br/>
-                <input type="text" id="remoteFile" name="remoteFile" style="width:90%" data-validate="url"/>
+                <input type="text" id="remoteFile" name="remoteFile" style="width:90%" data-validate="url,required"/>
             </div>
             <div style=" text-align: center;">
                 <input id="submitBtn" class="disableBtn" type="submit" value="Generate Merge Conflicts" />
