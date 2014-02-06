@@ -1,11 +1,10 @@
-    // getElementById
+$(document).ready(function(){
+   // getElementById
     function $id(id) {
         return document.getElementById(id);
     }
-    // call initialization file
-    if (window.File && window.FileList && window.FileReader) {
-        Init();
-    }
+    
+    Init();
 
     // initialize
     function Init() {
@@ -123,3 +122,4 @@
             return true;
         }
     }
+});
