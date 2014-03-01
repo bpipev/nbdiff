@@ -4,20 +4,20 @@ var Invoker = (function () {
     var _undo_commands = [];
     var storeAndExecute = function(command){
 	for(var i = 0;i < _undo_commands.length; i++)
- 	{
-	    if(command.id == _undo_commands[i].id)
-	    {
-	        _undo_commands.splice(i, 1);
-	    }
+	{
+		if(command.id === _undo_commands[i].id)
+		{
+			_undo_commands.splice(i, 1);
+		}
 	}
-        _undo_commands.push(command);
-        command.execute();
-    };
-    var undo = function(id) {
-        if(_undo_commands.length > 0) {
-            for(var i = 0;i < _undo_commands.length; i++)
+		_undo_commands.push(command);
+		command.execute();
+	};
+	var undo = function(id) {
+			if(_undo_commands.length > 0) {
+				for(var i = 0;i < _undo_commands.length; i++)
             {
-                if(_undo_commands[i].id == id)
+                if(_undo_commands[i].id === id)
                 {
                     var command = _undo_commands[i];
                     _undo_commands.splice(i, 1);
