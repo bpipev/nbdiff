@@ -7,14 +7,11 @@ DragDrop.prototype = (function() {
             return this;
         };
     var drag_start = function(ev) {
-            //TODO: create command containing drag source
             var rowID = $(ev.target).closest(".row").attr("id");
 
             var isLeft = $(ev.target).closest(".row-cell-merge-local").length > 0;
 
-            var cell_class = $(ev.target).hasClass("nbdiff-added") ? "nbdiff-added" : "nbdiff-deleted";
-
-            var data = { id: rowID, isLeft: isLeft, class: cell_class};
+            var data = { id: rowID, isLeft: isLeft};
             ev.dataTransfer.setData('data', JSON.stringify(data));
         };
     var allow_drop = function(ev) {
@@ -44,13 +41,18 @@ DragDrop.prototype = (function() {
                 var command = null;
 
                 if(data.isLeft) {
-                    command = new MoveRightCommand(MergeRows.rows[data.id]);
+						command = new MoveRightCommand(MergeRows.rows[data.id]);
+		    			var $button = $(ev.target).closest(".row").find('.row-cell-merge-controls-local > input');
+	            	$button.val("<-");
+                  $button.addClass("undo-button-local");
                 } else {
                     command = new MoveLeftCommand(MergeRows.rows[data.id]);
+		    			  var $button = $(ev.target).closest(".row").find('.row-cell-merge-controls-remote > input');
+		    			  $button.val("->");
+                    $button.addClass("undo-button-remote");
                 }
                 Invoker.storeAndExecute(command);
                 //the codemirror textbox is conflicting with the allow_drop/on_drop functions
-                console.log("Drop");
             }
      };
     var on_drag_enter = function(ev) {

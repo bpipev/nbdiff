@@ -3,6 +3,13 @@
 var Invoker = (function () {
     var _undo_commands = [];
     var storeAndExecute = function(command){
+	for(var i = 0;i < _undo_commands.length; i++)
+ 	{
+	    if(command.id == _undo_commands[i].id)
+	    {
+	        _undo_commands.splice(i, 1);
+	    }
+	}
         _undo_commands.push(command);
         command.execute();
     };
